@@ -1,0 +1,7 @@
+<decorators defaultdir="/decorators">
+	<decorator name="application" page="application.jsp">
+		<includes>
+			<pattern>/pages/*</pattern>
+		</includes>
+	</decorator>
+</decorators>
