@@ -16,9 +16,11 @@
         <url-pattern>/pages/*</url-pattern>
     </servlet-mapping>
 
+    <!-- SiteMesh (Template) -->
     <filter>
         <filter-name>sitemesh</filter-name>
-        <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter
+        <filter-class>
+            com.opensymphony.module.sitemesh.filter.PageFilter
         </filter-class>
     </filter>
     <filter-mapping>

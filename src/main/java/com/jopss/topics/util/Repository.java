@@ -133,18 +133,29 @@ public abstract class Repository implements Serializable {
     }
 
     @SuppressWarnings("rawtypes")
-    protected static List findAllWithPaginator(Class clazz, Paginator paginator) {
+    protected static List findAllWithPaginator(Class clazz, Paginator paginator, String... fieldsOrder) {
 
         Long pageCount = (Long) getConnection().createQuery("SELECT count(id) FROM " + clazz.getSimpleName()).getSingleResult();
         paginator.setCountResults(pageCount.intValue());
 
-        Query q = getConnection().createQuery("FROM " + clazz.getSimpleName());
+        StringBuilder str = new StringBuilder();
+        str.append("FROM " + clazz.getSimpleName());
+
+        if (fieldsOrder != null && fieldsOrder.length > 0) {
+            str.append(" ORDER BY ");
+
+            for (String field : fieldsOrder) {
+                str.append(field + ",");
+            }
+
+            str = new StringBuilder(str.toString().substring(0, str.toString().length() - 1));
+        }
+        
+        Query q = getConnection().createQuery(str.toString());
         q.setFirstResult(paginator.getFirstResult());
         q.setMaxResults(paginator.getMaxResult());
 
-        List retorno = q.getResultList();
-
-        return retorno;
+        return q.getResultList();
     }
 
     protected static EntityManager getConnection() {

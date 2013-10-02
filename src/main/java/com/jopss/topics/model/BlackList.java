@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.jopss.topics.util.Repository;
 import com.jopss.topics.util.StringUtils;
 import java.util.List;
+import javax.persistence.TableGenerator;
 
 /**
  * Objeto de suporte para palavras em que devem ser censuradas do conteudo do comentario.
@@ -22,7 +23,8 @@ public class BlackList extends Repository {
 	private static final long serialVersionUID = -7194862055167038787L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "generatorName")
+	@TableGenerator(name = "generatorName", allocationSize = 1)
 	private Long id;
 	
 	@NotEmpty

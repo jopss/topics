@@ -1,6 +1,5 @@
 <%@include file="/WEB-INF/tags/taglibs.jsp"%>
 
-		<script src="${context}/resources/js/jquery.min.js"></script>
 <script type="text/javascript">
     
         function showReply(idButton, commentReference){

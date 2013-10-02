@@ -6,7 +6,6 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,10 +23,30 @@ public class CommentController {
         return "comment";
     }
     
-    @RequestMapping(value = "/reference/{referenceId}/save/", method = RequestMethod.POST)
-    public String save(@Valid Comment comment, BindingResult result, Model model, @PathVariable Long referenceId) {
+    @RequestMapping(value = "/topic/{topicId}/save/", method = RequestMethod.POST)
+    public String saveCommentTopic(@Valid Comment comment, BindingResult result, Model model, @PathVariable Long topicId) {
 
-        comment.prepareToSave(referenceId);
+        comment.prepareToSaveTopic(topicId);
+        
+        if (!result.hasErrors()) {
+            try {
+
+                comment = comment.save();
+                model.addAttribute("msgSuccess", "form.save.success");
+
+            } catch (Exception e) {
+                model.addAttribute("msgError", e.getMessage());
+            }
+        }
+        
+        this.addAttributesRequest(comment.getTopic(),model);
+        return "comment";
+    }
+    
+    @RequestMapping(value = "/reference/{referenceId}/save/", method = RequestMethod.POST)
+    public String saveCommentReference(@Valid Comment comment, BindingResult result, Model model, @PathVariable Long referenceId) {
+
+        comment.prepareToSaveReference(referenceId);
         
         if (!result.hasErrors()) {
             try {

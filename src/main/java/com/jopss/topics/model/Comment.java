@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.jopss.topics.util.Repository;
+import javax.persistence.TableGenerator;
 
 @Entity
 public class Comment extends Repository {
@@ -18,7 +19,8 @@ public class Comment extends Repository {
     private static final long serialVersionUID = -821603216119988496L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "generatorName")
+    @TableGenerator(name = "generatorName", allocationSize = 1)
     private Long id;
 
     @NotEmpty
@@ -33,12 +35,20 @@ public class Comment extends Repository {
     
     private transient String nivel;
     
-    public Comment prepareToSave(Long referenceId) {
+    public Comment prepareToSaveReference(Long referenceId) {
         Comment ref = Comment.findById(Comment.class, referenceId);
         this.setReference(ref);
         this.setTopic(ref.getTopic());
         return this;
     }
+    
+    public Comment prepareToSaveTopic(Long topicId) {
+        Topic topic = Topic.findById(topicId);
+        this.setReference(null);
+        this.setTopic(topic);
+        return this;
+    }
+    
     public Comment save() throws ValidatingException {
         
         this.setContent( BlackList.parse(this.getContent()) );

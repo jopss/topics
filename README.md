@@ -4,9 +4,11 @@ Projeto de exemplo utilizando as bibliotecas e frameworks abaixo.
 
 + Spring MVC 3
 + JPA/Hibernate
-+ Migrations
-+ Bean Validator
++ Migrations (com FlyWay)
++ Bean Validation
 + JQuery
++ Template com SiteMesh
++ Paginacao real (em banco)
 
 ---------------------------------------------------------------------------
 Configuracoes

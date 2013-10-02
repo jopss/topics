@@ -3,6 +3,7 @@ package com.jopss.topics.util;
 import java.io.Serializable;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
  * Auxilia a paginacao real dos dados.
  */
 @Component
-@Scope(value="session")
+@Scope(value="session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Paginator implements Serializable {
 
 	private static final long serialVersionUID = -665198335930955704L;
@@ -46,15 +47,10 @@ public class Paginator implements Serializable {
 			return 0;
 		}
 		
-		Integer pageCount = getPageCount() - 1;
-		return pageCount * MAX_BY_PAGE;
+		return (currentPage-1) * MAX_BY_PAGE;
 	}
 	public Integer getMaxResult() {
-		if(currentPage == 1){
-			return MAX_BY_PAGE;
-		}
-
-		return getPageCount() * MAX_BY_PAGE;
+		return MAX_BY_PAGE;
 	}
 	
 }

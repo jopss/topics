@@ -1,10 +1,13 @@
 package com.jopss.topics.controller;
 
 import com.jopss.topics.model.Topic;
+import com.jopss.topics.util.Paginator;
 import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -12,10 +15,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/topic")
 public class TopicController {
 
+    @Autowired
+    private Paginator paginator;
+    
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String show(Model model) {
-        model.addAttribute("topics", Topic.findAll());
+        return this.showPage(model, 1);
+    }
+    
+    @RequestMapping(value = "/{page}", method = RequestMethod.GET)
+    public String showPage(Model model, @PathVariable Integer page) {
+        
+        paginator.setCurrentPage(page);
+        
+        model.addAttribute("topics", Topic.findAll(paginator));
         model.addAttribute("topic", new Topic());
+        model.addAttribute("pageCount", paginator.getPageCount());
         return "topic";
     }
 
@@ -32,7 +47,6 @@ public class TopicController {
             model.addAttribute("msgError", e.getMessage());
         }
         
-        model.addAttribute("topics", Topic.findAll());
-        return "topic";
+        return this.showPage(model, 1);
     }
 }

@@ -1,5 +1,6 @@
 package com.jopss.topics.model;
 
+import com.jopss.topics.util.Paginator;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.jopss.topics.util.Repository;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import javax.persistence.TableGenerator;
 import javax.persistence.TypedQuery;
 
 @Entity
@@ -21,7 +23,8 @@ public class Topic extends Repository {
     private static final long serialVersionUID = 2255060059417187982L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "generatorName")
+    @TableGenerator(name = "generatorName", allocationSize = 1)
     private Long id;
     
     @NotEmpty
@@ -32,8 +35,8 @@ public class Topic extends Repository {
         return Topic.findById(Topic.class, id);
     }
     
-    public static List<Topic> findAll(){
-        return findAll(Topic.class, "dateCreated");
+    public static List<Topic> findAll(Paginator paginator){
+        return findAllWithPaginator(Topic.class, paginator, "dateCreated");
     }
     
     public Set<Comment> searchHierarchy(){
