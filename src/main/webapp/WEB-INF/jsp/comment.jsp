@@ -24,9 +24,10 @@
         }
 </script>
 
-<a href="${contextPage}/topic/"> <fmt:message key='home' /> </a>
-
 <h1> <fmt:message key='comments' /> </h1>
+<hr />
+
+<a href="${contextPage}/home/"> <fmt:message key='home' /> </a>
 
 <jopss:messages msgSuccess="${msgSuccess}" msgError="${msgError}" />
         

@@ -16,10 +16,7 @@ public class CommentController {
 
     @RequestMapping(value = "/topic/{topicId}/", method = RequestMethod.GET)
     public String show(@PathVariable Long topicId, Model model) {
-        
-        Topic topic = Topic.findById(topicId);
-        
-        this.addAttributesRequest(topic,model);
+        this.addAttributesRequest( Topic.findById(topicId), model);
         return "comment";
     }
     
@@ -65,8 +62,8 @@ public class CommentController {
     
     private void addAttributesRequest(Topic topic, Model model){
         model.addAttribute("topic", topic);
-        model.addAttribute("comments", topic.searchHierarchy());
         model.addAttribute("comment", new Comment());
+        model.addAttribute("comments", topic.searchHierarchy());
     }
     
 }
