@@ -11,7 +11,7 @@
 
 <br/>
 
-<form name="login_form" action="j_spring_security_check" method="POST">
+<form name="login_form" action="${context}/j_spring_security_check" method="POST">
     Usuario: <input type='text' name='j_username' /> <br/>
     Senha: <input type='password' name='j_password'>
     
@@ -19,3 +19,10 @@
     
     <input type="submit" value="Login" />
 </form>
+
+<br/>
+<p>Senha para Testes:</p>
+<ul>
+    <li>Login: admin</li>
+    <li>Senha: 123456</li>
+</ul>

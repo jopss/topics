@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/decorators">
-	<decorator name="application" page="application.jsp">
-		<includes>
-			<pattern>*</pattern>
-		</includes>
-	</decorator>
+    
+    <excludes>
+        <pattern>/pages/login/</pattern>
+    </excludes>
+  
+    <decorator name="application" page="application.jsp">
+        <includes>
+            <pattern>*</pattern>
+        </includes>
+    </decorator>
 </decorators>

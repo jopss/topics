@@ -20,6 +20,9 @@
 	
 	<body>
 		<div>
+                        <a href="${context}/logout/"> << Sair </a>
+                        <br/>
+                        
 			<decorator:body />
 		</div>
 	</body>

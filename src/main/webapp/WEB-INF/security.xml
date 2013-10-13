@@ -1,30 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
                 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-                http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+                http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
  
-    <security:http auto-config="true">
-        <security:form-login login-page="/login.jsp" default-target-url="/pages/home/" authentication-failure-url="/login.jsp"/>
+    <!-- Tags properties e placeholderConfig utilizadas para ler as propriedades do arquivo de banco de dados. 
+         Com isso podemos utilizar as chaves do arquivo properties como ${key} -->
+    <util:properties id="defaultProperties" local-override="false" location="classpath:topics_db.properties" />
+    <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="localOverride" value="true" />
+        <property name="propertiesArray">
+            <list>
+                <ref bean="defaultProperties" />
+            </list>
+        </property>
+    </bean>
+
+    <security:http auto-config="true" access-denied-page="/access_denied.jsp" >
+        <security:form-login login-page="/pages/login/" default-target-url="/pages/home/" authentication-failure-url="/pages/login/"/>
         <security:logout logout-success-url="/logout" />
         
-        <!-- Por Pagina -->
+        <!-- Recursos e Paginas Publicas -->
+        <security:intercept-url pattern="/resources/**"                         access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <security:intercept-url pattern="/login.jsp*"                           access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <security:intercept-url pattern="/resources/images/**"                  access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <security:intercept-url pattern="/resources/js/**"                      access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <security:intercept-url pattern="/pages/login/**"                       access="IS_AUTHENTICATED_ANONYMOUSLY" />
         
-        <!-- Caso nao caia por pagina, bloqueia qualquer acesso. -->
+        <!-- Restricoes de perfils por pagina -->
+        <!-- NOTHING! -->
+        
+        <!-- Caso nao caia por pagina, bloqueia qualquer outro acesso. -->
         <security:intercept-url pattern="/**" 					access="ROLE_USER" />
     </security:http>
  
     <security:authentication-manager>
         <security:authentication-provider>
-            <security:user-service>
-                <security:user name="admin" password="123456" authorities="ROLE_USER" />
-            </security:user-service>
+            <security:password-encoder hash="md5" />
+            <security:jdbc-user-service data-source-ref="dataSource"
+                                        users-by-username-query="SELECT username, password, active as enable FROM topic_user WHERE username=?"
+                                        authorities-by-username-query="SELECT DISTINCT u.username, p.role FROM topic_user u INNER JOIN permission p ON u.permission_id = p.id WHERE u.username=?"
+            />
         </security:authentication-provider>
     </security:authentication-manager>
- 
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+        <property name="url" value="${hibernate.connection.url}" />
+        <property name="driverClassName" value="${hibernate.connection.driver_class}" />
+        <property name="username" value="${hibernate.connection.username}" />
+        <property name="password" value="${hibernate.connection.password}" />
+    </bean>
+
 </beans>

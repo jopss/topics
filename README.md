@@ -2,13 +2,14 @@ Topics
 ======
 Projeto de exemplo utilizando as bibliotecas e frameworks abaixo.
 
-+ Spring MVC 3
-+ JPA/Hibernate
++ Spring MVC 3 com REST e URL's amigáveis
++ ORM JPA/Hibernate
 + Migrations (com FlyWay)
 + Bean Validation
 + JQuery
 + Template com SiteMesh
 + Paginacao real (em banco)
++ Autenticação com Spring Security
 
 ---------------------------------------------------------------------------
 Configuracoes
@@ -21,6 +22,7 @@ Configuracoes
 ---------------------------------------------------------------------------
 Migrations
 ==========
+
 Para saber mais sobre as configurações e a motivação de utilizar Migrations, veja este post: http://blog.jopss.com/post/62717268881/automatizando-scripts-de-banco-com-java
 
 
