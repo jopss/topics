@@ -12,7 +12,7 @@ Projeto de exemplo utilizando as bibliotecas e frameworks abaixo.
 + Autenticação em base com Spring Security
 
 ---------------------------------------------------------------------------
-Configuracoes
+Configurações
 =============
 
 1. Deve ser desenvolvido com encoding UTF-8.
