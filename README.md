@@ -1,6 +1,10 @@
 Topics
 ======
-Projeto de exemplo utilizando as bibliotecas e frameworks abaixo.
+Projeto Java Web de exemplo utilizando as bibliotecas e frameworks abaixo.
+
+---------------------------------------------------------------------------
+Arquitetura
+===========
 
 + Spring MVC 3 com REST e URL's amigáveis
 + ORM JPA/Hibernate
@@ -22,7 +26,7 @@ Configurações
 Migrations
 ==========
 
-Para saber mais sobre as configuraçõs e a motivaçã de utilizar Migrations, veja este post: http://blog.jopss.com/post/62717268881/automatizando-scripts-de-banco-com-java
+Para saber mais sobre as configuraçõs e a motivação de utilizar Migrations, veja este post: http://blog.jopss.com/post/62717268881/automatizando-scripts-de-banco-com-java
 
 ---------------------------------------------------------------------------
 Status
