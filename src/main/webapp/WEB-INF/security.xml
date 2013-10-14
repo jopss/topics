@@ -24,7 +24,6 @@
 
     <security:http auto-config="true" access-denied-page="/access_denied.jsp" >
         <security:form-login login-page="/pages/login/" default-target-url="/pages/home/" authentication-failure-url="/pages/login/"/>
-        <security:logout logout-success-url="/logout" />
         
         <!-- Recursos e Paginas Publicas -->
         <security:intercept-url pattern="/resources/**"                         access="IS_AUTHENTICATED_ANONYMOUSLY" />

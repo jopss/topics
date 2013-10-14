@@ -20,7 +20,7 @@
 	
 	<body>
 		<div>
-                        <a href="${context}/logout/"> << Sair </a>
+                        <a href="${context}/j_spring_security_logout"> << Sair </a>
                         <br/>
                         
 			<decorator:body />
