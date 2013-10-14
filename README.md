@@ -2,28 +2,30 @@ Topics
 ======
 Projeto de exemplo utilizando as bibliotecas e frameworks abaixo.
 
-+ Spring MVC 3 com REST e URL's amigáveis
++ Spring MVC 3 com REST e URL's amigÃ¡veis
 + ORM JPA/Hibernate
 + Migrations (com FlyWay)
 + Bean Validation
 + JQuery
 + Template com SiteMesh
 + Paginacao real (em banco)
-+ Autenticação com Spring Security
++ AutenticaÃ§Ã£o em base com Spring Security
 
 ---------------------------------------------------------------------------
 Configuracoes
 =============
 
 1. Deve ser desenvolvido com encoding UTF-8.
-
-2. Renomeie o arquivo "src\main\resources\topics_db_sample.properties" para "topics_db.properties" (sem o sample). Ele é um arquivo de exemplo de configurações de banco de dados relacional. Não versione o arquivo renomeado, e nunca altere/comite diretamente o arquivo sample.
+2. Renomeie o arquivo "src\main\resources\topics_db_sample.properties" para "topics_db.properties" (sem o sample). Ele ï¿½ um arquivo de exemplo de configuraï¿½ï¿½es de banco de dados relacional. Nï¿½o versione o arquivo renomeado, e nunca altere/comite diretamente o arquivo sample.
 	
 ---------------------------------------------------------------------------
 Migrations
 ==========
 
-Para saber mais sobre as configurações e a motivação de utilizar Migrations, veja este post: http://blog.jopss.com/post/62717268881/automatizando-scripts-de-banco-com-java
+Para saber mais sobre as configuraï¿½ï¿½es e a motivaï¿½ï¿½o de utilizar Migrations, veja este post: http://blog.jopss.com/post/62717268881/automatizando-scripts-de-banco-com-java
 
+---------------------------------------------------------------------------
+Status
+======
 
-
+Finalizado. Em manutenÃ§Ã£o.
