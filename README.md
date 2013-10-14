@@ -16,13 +16,13 @@ Configuracoes
 =============
 
 1. Deve ser desenvolvido com encoding UTF-8.
-2. Renomeie o arquivo "src\main\resources\topics_db_sample.properties" para "topics_db.properties" (sem o sample). Ele � um arquivo de exemplo de configura��es de banco de dados relacional. N�o versione o arquivo renomeado, e nunca altere/comite diretamente o arquivo sample.
+2. Renomeie o arquivo "src\main\resources\topics_db_sample.properties" para "topics_db.properties" (sem o sample). Ele é um arquivo de exemplo de configurações de banco de dados relacional. Não versione o arquivo renomeado, e nunca altere/comite diretamente o arquivo sample.
 	
 ---------------------------------------------------------------------------
 Migrations
 ==========
 
-Para saber mais sobre as configura��es e a motiva��o de utilizar Migrations, veja este post: http://blog.jopss.com/post/62717268881/automatizando-scripts-de-banco-com-java
+Para saber mais sobre as configuraçõs e a motivaçã de utilizar Migrations, veja este post: http://blog.jopss.com/post/62717268881/automatizando-scripts-de-banco-com-java
 
 ---------------------------------------------------------------------------
 Status
