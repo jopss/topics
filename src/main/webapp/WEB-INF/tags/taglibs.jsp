@@ -4,6 +4,7 @@
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="jopss" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="cp-componentes" tagdir="/WEB-INF/tags/cp-componentes"%>
 
 <fmt:setBundle basename="messages"/> 
 

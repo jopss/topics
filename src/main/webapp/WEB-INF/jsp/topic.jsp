@@ -1,10 +1,5 @@
 <%@include file="/WEB-INF/tags/taglibs.jsp"%>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-	});
-</script>
-
 <h1> <fmt:message key='topics' /> </h1>
 <hr />
 
@@ -12,9 +7,13 @@
 
 <jopss:messages msgSuccess="${msgSuccess}" msgError="${msgError}" />
 
-<form:form id="topic_form" method="POST" action="${contextPage}/topic/save/" modelAttribute="topic">
+<form:form id="topic_form" method="POST" action="${contextPage}/topic/save/" modelAttribute="topicForm">
     
-    <textarea name="description" cols="50" rows="3"></textarea>
+    <textarea name="topic.description" cols="50" rows="3"></textarea>
+    
+    <cp-componentes:captcha-logico nameRadiosRespostas="responseUser" />
+    
+    <br/>
     <input type="submit" value="<fmt:message key='topics.button.submit' />" />
     
     <br/>
