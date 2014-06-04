@@ -28,4 +28,4 @@ Para saber mais sobre as configuraçõs e a motivação de utilizar Migrations, 
 Status
 ======
 
-Finalizado. Em manutenção.
+Finalizado.
