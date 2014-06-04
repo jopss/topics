@@ -1,6 +1,6 @@
 Topics
 ======
-Projeto Java Web de exemplo utilizando as bibliotecas e frameworks abaixo.
+Projeto Java Web de exemplo utilizando as bibliotecas e frameworks abaixo. É um aplicação para postar tópicos de perguntas com possibilidade de respostas.
 
 Arquitetura
 ===========
