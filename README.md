@@ -13,6 +13,7 @@ Arquitetura
 + Template com SiteMesh
 + Paginacao real (em banco)
 + Autenticação em base com Spring Security
++ Captcha lógico (http://jopss.github.io/captcha-logico/)
 
 Configurações
 =============
